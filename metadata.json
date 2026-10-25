@@ -1,0 +1,6 @@
+{
+  "name": "KiddoEnglish - Bé Học Tiếng Anh",
+  "description": "Ứng dụng học tiếng Anh đơn giản, thân thiện dành cho thiếu nhi với kho từ vựng flashcard, hội thoại tương tác và theo dõi tiến độ.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

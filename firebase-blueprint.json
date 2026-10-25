@@ -1,0 +1,99 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile document",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Unique Firebase Auth UID",
+          "maxLength": 128
+        },
+        "email": {
+          "type": "string",
+          "description": "User email address",
+          "maxLength": 256
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name",
+          "maxLength": 100
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "User photo URL",
+          "maxLength": 512
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp",
+          "maxLength": 64
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Last update timestamp",
+          "maxLength": 64
+        }
+      },
+      "required": ["uid", "email", "createdAt", "updatedAt"]
+    },
+    "Progress": {
+      "title": "Progress",
+      "description": "User English learning progress including learned words, completed dialogues, and streaks",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner user ID",
+          "maxLength": 128
+        },
+        "learnedWordIds": {
+          "type": "array",
+          "description": "Array of learned word identifiers (max 500)"
+        },
+        "favoriteWordIds": {
+          "type": "array",
+          "description": "Array of bookmarked word identifiers (max 500)"
+        },
+        "completedDialogueIds": {
+          "type": "array",
+          "description": "Array of completed dialogue identifiers (max 100)"
+        },
+        "streak": {
+          "type": "number",
+          "description": "Current consecutive days streak"
+        },
+        "totalReviewCount": {
+          "type": "number",
+          "description": "Total flashcard review count"
+        },
+        "lastStudyDate": {
+          "type": "string",
+          "description": "YYYY-MM-DD string of last study date",
+          "maxLength": 10
+        },
+        "dailyStats": {
+          "type": "object",
+          "description": "Daily study counts map formatted as YYYY-MM-DD to count"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp of last progress update",
+          "maxLength": 64
+        }
+      },
+      "required": ["userId", "learnedWordIds", "favoriteWordIds", "completedDialogueIds", "streak", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile document storing basic account metadata"
+    },
+    "/users/{userId}/progress/summary": {
+      "schema": "Progress",
+      "description": "User study stats and learning tracking"
+    }
+  }
+}
